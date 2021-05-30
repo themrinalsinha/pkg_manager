@@ -2,8 +2,15 @@
 Repo containing helper shell scripts to install all the necessary packages while setting up desktop or servers. It mostly contains tools/packages that i use on daily basis.
 
 ## Documentation
+- **`bensh.sh`** System benchmarking (for both desktop or server)
+  ```
+  $ wget -O - https://dl.mrinal.xyz/x/bench.sh | bash
+  ```
 
 - **`desktop/setup.sh`** Desktop setup script
+  ```shell
+  $ wget -O - https://dl.mrinal.xyz/x/desktop/setup.sh | bash
+  ```
   - List of packages it installs
     ```
     git, zip, zsh,gcc,htop,make,unzip,libc-dev,mitmproxy,libffi-dev, terminator, python3-pip, python3-dev, dconf-editor, gnome-tweaks, libxml2-utils, build-essential, apt-transport-https, indicator-multiload, gnome-shell-extensions
@@ -29,6 +36,15 @@ Repo containing helper shell scripts to install all the necessary packages while
     $ id -nG
     $ sudo usermod -aG docker ${USER}
     ```
+- **`server/setup.sh`** Server setup script
+  ```shell
+  $ wget -O - https://dl.mrinal.xyz/x/server/setup.sh | bash
+  ```
+  - List of packages it installs on server
+    ```
+    git, zip, zsh, gcc, curl, htop, make, unzip, nginx, libc-dev, libffi-dev, python3-pip, python3-dev, libxml2-utils, build-essential, apt-transport-https
+    ```
+  - Rest other setting if required can be followed from above.
 
 ---
 ### Support
