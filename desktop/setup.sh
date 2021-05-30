@@ -32,6 +32,7 @@ if [[ "$SYSTEM" == "Linux" ]]; then
             'zip'
             'zsh'
             'gcc'
+            'curl'
             'htop'
             'make'
             'unzip'
@@ -50,7 +51,7 @@ if [[ "$SYSTEM" == "Linux" ]]; then
             'gnome-shell-extensions'
         )
 
-        # sudo apt-get update && sudo apt-get upgrade -y
+        sudo apt-get update && sudo apt-get upgrade -y
         check_status
 
         echo -e "\n🐣 ${BOLD}Initiating package installation${RESET}\n"
@@ -70,6 +71,12 @@ if [[ "$SYSTEM" == "Linux" ]]; then
             sudo add-apt-repository ppa:lazygit-team/release -y
             sudo apt-get update
             sudo apt-get install lazygit -y
+            check_status
+        fi
+
+        echo -e "\n🐣 ${BOLD}Setting up lazydocker${RESET}\n"
+        if ! [ -x "$(command -v lazydocker)" ]; then
+            curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
             check_status
         fi
 

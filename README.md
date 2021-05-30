@@ -2,8 +2,15 @@
 Repo containing helper shell scripts to install all the necessary packages while setting up desktop or servers. It mostly contains tools/packages that i use on daily basis.
 
 ## Documentation
+- **`bensh.sh`** System benchmarking (for both desktop or server)
+  ```
+  $ wget -O - https://dl.mrinal.xyz/x/bench.sh | bash
+  ```
 
 - **`desktop/setup.sh`** Desktop setup script
+  ```shell
+  $ wget -O - https://dl.mrinal.xyz/x/desktop/setup.sh | bash
+  ```
   - List of packages it installs
     ```
     git, zip, zsh,gcc,htop,make,unzip,libc-dev,mitmproxy,libffi-dev, terminator, python3-pip, python3-dev, dconf-editor, gnome-tweaks, libxml2-utils, build-essential, apt-transport-https, indicator-multiload, gnome-shell-extensions
