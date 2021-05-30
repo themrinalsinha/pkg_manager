@@ -36,6 +36,15 @@ Repo containing helper shell scripts to install all the necessary packages while
     $ id -nG
     $ sudo usermod -aG docker ${USER}
     ```
+- **`server/setup.sh`** Server setup script
+  ```shell
+  $ wget -O - https://dl.mrinal.xyz/x/server/setup.sh | bash
+  ```
+  - List of packages it installs on server
+    ```
+    git, zip, zsh, gcc, curl, htop, make, unzip, nginx, libc-dev, libffi-dev, python3-pip, python3-dev, libxml2-utils, build-essential, apt-transport-https
+    ```
+  - Rest other setting if required can be followed from above.
 
 ---
 ### Support
