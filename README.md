@@ -1,4 +1,7 @@
 # 🐧 `Linux` Package Managing Scripts
+
+[![DEPLOY ( dl.mrinal.xyz/x/ )](https://github.com/themrinalsinha/pkg_manager/actions/workflows/deploy.yml/badge.svg)](https://github.com/themrinalsinha/pkg_manager/actions/workflows/deploy.yml)
+
 Repo containing helper shell scripts to install all the necessary packages while setting up desktop or servers. It mostly contains tools/packages that i use on daily basis.
 
 ## Documentation
