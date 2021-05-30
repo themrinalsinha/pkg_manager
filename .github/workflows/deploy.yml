@@ -1,0 +1,16 @@
+name: DEPLOY ( dl.mrinal.xyz/x/ )
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: Deploying
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: installing
+      run: sudo apt-get install -y sshpass
+    - name: deploying scripts
+      run: sshpass -p ${{ secrets.SECRET }} scp -v -o stricthostkeychecking=no -r * ${{ secrets.USER }}@${{ secrets.HOSTNAME }}:/srv/hosted_files/x/
