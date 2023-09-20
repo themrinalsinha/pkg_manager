@@ -8,9 +8,19 @@ jobs:
   deploy:
     name: Deploying
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
-    - name: installing
-      run: sudo apt-get install -y sshpass
-    - name: deploying scripts
-      run: sshpass -p ${{ secrets.SECRET }} scp -v -o stricthostkeychecking=no -r * ${{ secrets.USER }}@${{ secrets.HOSTNAME }}:/srv/hosted_files/x/
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setting up SSH Key
+      run: |
+        mkdir -p ~/.ssh/
+        echo "${{ secrets.SRV_PVT_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan ${{ secrets.DL_HOST }} >> ~/.ssh/known_hosts
+        chmod 644 ~/.ssh/known_hosts
+
+    - name: Deploy to server
+      run: |
+        rsync -avz --delete --exclude '.git' --exclude '.github' --exclude 'README.md' --exclude 'LICENSE' --exclude '.gitignore' --exclude 'deploy.yml' . ${{ secrets.HOST_USERNAME }}@${{ secrets.DL_HOST }}:/srv/hosted_files/x/
