@@ -1,0 +1,9 @@
+server {
+  listen 80;
+  server_name dl.mrinal.xyz;
+
+  location / {
+    root /srv/hosted_files;
+    autoindex on;
+  }
+}

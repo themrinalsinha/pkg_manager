@@ -23,4 +23,4 @@ jobs:
 
     - name: Deploy to server
       run: |
-        rsync -avz --delete --exclude '.git' --exclude '.github' --exclude 'README.md' --exclude 'LICENSE' --exclude '.gitignore' --exclude 'deploy.yml' . ${{ secrets.HOST_USERNAME }}@${{ secrets.DL_HOST }}:/srv/hosted_files/x/
+        rsync -avz --delete --exclude '.git' --exclude '.github' --exclude 'README.md' --exclude 'LICENSE' --exclude '.gitignore' --exclude 'deploy.yml' --exclude 'hosted_files.ngix' . ${{ secrets.HOST_USERNAME }}@${{ secrets.DL_HOST }}:/srv/hosted_files/x/
