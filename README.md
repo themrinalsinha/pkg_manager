@@ -6,42 +6,42 @@ Repo containing helper shell scripts to install all the necessary packages while
 
 ## Documentation
 - **`bensh.sh`** System benchmarking (for both desktop or server)
-  ```
-  $ wget -O - https://dl.mrinal.xyz/x/bench.sh | bash
+  ```console
+  wget -O - https://dl.mrinal.xyz/x/bench.sh | bash
   ```
 
 - **`desktop/setup.sh`** Desktop setup script
-  ```shell
-  $ wget -O - https://dl.mrinal.xyz/x/desktop/setup.sh | bash
+  ```console
+  wget -O - https://dl.mrinal.xyz/x/desktop/setup.sh | bash
   ```
   - List of packages it installs
     ```
     git, zip, zsh,gcc,htop,make,unzip,libc-dev,mitmproxy,libffi-dev, terminator, python3-pip, python3-dev, dconf-editor, gnome-tweaks, libxml2-utils, build-essential, apt-transport-https, indicator-multiload, gnome-shell-extensions
     ```
   - Setting up the default terminal
-    ```shell
-    $ sudo update-alternatives --config x-terminal-emulator
+    ```console
+    sudo update-alternatives --config x-terminal-emulator
     ```
   - Setting up custom `zsh` prompt
-    ```shell
-    $ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+    ```console
+    wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
     ```
     Enabling `zsh` shell as default
-    ```shell
-    $ chsh
-    $ /bin/zsh # enter in the prompt
+    ```console
+    chsh
     ```
+    then, /bin/zsh # enter in the prompt
   - Installs flat icon theme from [snwh](https://launchpad.net/~snwh/+archive/ubuntu/ppa?field.series_filter=bionic)
   - Run docker without `sudo`
-    ```shell
-    $ sudo usermod -aG docker ${USER}
-    $ su - ${USER}
-    $ id -nG
-    $ sudo usermod -aG docker ${USER}
+    ```console
+    sudo usermod -aG docker ${USER}
+    su - ${USER}
+    id -nG
+    sudo usermod -aG docker ${USER}
     ```
 - **`server/setup.sh`** Server setup script
-  ```shell
-  $ wget -O - https://dl.mrinal.xyz/x/server/setup.sh | bash
+  ```console
+  wget -O - https://dl.mrinal.xyz/x/server/setup.sh | bash
   ```
   - List of packages it installs on server
     ```

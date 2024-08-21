@@ -16,6 +16,7 @@ jobs:
     - name: Setting up SSH Key
       run: |
         mkdir -p ~/.ssh/
+        eval "$(ssh-agent -s)"
         echo "${{ secrets.SRV_PVT_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan ${{ secrets.DL_HOST }} >> ~/.ssh/known_hosts
