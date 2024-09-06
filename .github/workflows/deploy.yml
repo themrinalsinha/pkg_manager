@@ -11,17 +11,22 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setting up SSH Key
       run: |
         mkdir -p ~/.ssh/
-        eval "$(ssh-agent -s)"
         echo "${{ secrets.SRV_PVT_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan ${{ secrets.DL_HOST }} >> ~/.ssh/known_hosts
-        chmod 644 ~/.ssh/known_hosts
+        ssh-keyscan -H ${{ secrets.DL_HOST }} >> ~/.ssh/known_hosts
 
     - name: Deploy to server
       run: |
-        rsync -avz --delete --exclude '.git' --exclude '.github' --exclude 'README.md' --exclude 'LICENSE' --exclude '.gitignore' --exclude 'deploy.yml' --exclude 'hosted_files.ngix' . ${{ secrets.HOST_USERNAME }}@${{ secrets.DL_HOST }}:/srv/hosted_files/x/
+        rsync -avz --delete --exclude '.git' --exclude '.github' \
+        --exclude 'README.md' --exclude 'LICENSE' --exclude '.gitignore' \
+        --exclude 'deploy.yml' --exclude 'hosted_files.nginx' \
+        -e "ssh -i ~/.ssh/id_rsa" . ${{ secrets.HOST_USERNAME }}@${{ secrets.DL_HOST }}:/srv/hosted_files/x/
+
+# NOTE: On first run you may need to manually SSH into the server to accept the host key.
+#      This is a one-time operation.
+# cat ~/id_xxx.pub , copy the key and add it to ~/.ssh/authorized_keys on the server.
